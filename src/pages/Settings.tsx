@@ -21,11 +21,11 @@ const Settings = () => {
     <div className="pb-20 px-4 pt-6">
       {/* Header */}
       <div className="text-center mb-6">
-        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <SettingsIcon className="w-8 h-8 text-gray-600" />
+        <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
+          <SettingsIcon className="w-8 h-8 text-gray-600 dark:text-gray-300" />
         </div>
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">Settings</h1>
-        <p className="text-gray-600">Customize your Gospel Guide experience</p>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Settings</h1>
+        <p className="text-gray-600 dark:text-gray-400">Customize your Gospel Guide experience</p>
       </div>
 
       {/* Settings Sections */}
