@@ -1,31 +1,33 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Settings as SettingsIcon, Bell, Moon, Sun, Type, Download } from 'lucide-react';
 import { SettingsContext } from '../context/SettingsContext';
 
 const Settings = () => {
   const { settings, updateSettings } = useContext(SettingsContext);
 
-  const handleToggle = (key: string) => {
+  type ToggleableSetting = 'dailyReminder' | 'readingReminder' | 'autoScroll' | 'nightMode';
+
+  const handleToggle = (key: ToggleableSetting) => {
     updateSettings({ [key]: !settings[key] });
   };
 
-  const handleFontSizeChange = (size: string) => {
+  const handleFontSizeChange = (size: 'small' | 'medium' | 'large') => {
     updateSettings({ fontSize: size });
   };
 
   const handleThemeChange = (theme: string) => {
-    updateSettings({ theme: theme });
+    updateSettings({ theme: theme as 'light' | 'dark' | 'auto' });
   };
 
   return (
     <div className="pb-20 px-4 pt-6">
       {/* Header */}
       <div className="text-center mb-6">
-        <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
-          <SettingsIcon className="w-8 h-8 text-gray-600 dark:text-gray-300" />
+        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <SettingsIcon className="w-8 h-8 text-gray-600" />
         </div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Settings</h1>
-        <p className="text-gray-600 dark:text-gray-400">Customize your Gospel Guide experience</p>
+        <h1 className="text-2xl font-bold text-gray-900 mb-2">Settings</h1>
+        <p className="text-gray-600">Customize your Gospel Guide experience</p>
       </div>
 
       {/* Settings Sections */}
@@ -113,11 +115,11 @@ const Settings = () => {
             <div>
               <p className="font-medium text-gray-900 mb-3">Font Size</p>
               <div className="grid grid-cols-3 gap-3">
-                {[
-                  { value: 'small', label: 'Small' },
-                  { value: 'medium', label: 'Medium' },
-                  { value: 'large', label: 'Large' }
-                ].map(({ value, label }) => (
+                {([
+                  { value: 'small' as 'small', label: 'Small' },
+                  { value: 'medium' as 'medium', label: 'Medium' },
+                  { value: 'large' as 'large', label: 'Large' }
+                ] as { value: 'small' | 'medium' | 'large'; label: string }[]).map(({ value, label }) => (
                   <button
                     key={value}
                     onClick={() => handleFontSizeChange(value)}

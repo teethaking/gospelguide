@@ -1,4 +1,3 @@
-import React from 'react';
 import { Users, Award, Target, Heart, CheckCircle, Star } from 'lucide-react';
 
 const About = () => {
